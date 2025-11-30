@@ -157,9 +157,9 @@ export default function Home() {
                     {/* Settings Panel */}
                     <div className="space-y-6">
                         {/* Voice Selection */}
-                        <div className="glass-strong rounded-2xl p-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                                <Mic2 className="w-5 h-5 text-purple-400" />
+                        <div className="glass-strong rounded-lg p-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                                <Mic2 className="w-5 h-5 text-accent" />
                                 Voice
                             </h2>
 
@@ -169,10 +169,10 @@ export default function Home() {
                                     const voice = voices.find(v => v.name === e.target.value);
                                     if (voice) setVoice(voice);
                                 }}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                className="w-full bg-white border border-primary/20 rounded-lg p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                             >
                                 {voices.map((voice) => (
-                                    <option key={voice.name} value={voice.name} className="bg-gray-900">
+                                    <option key={voice.name} value={voice.name} className="bg-white text-foreground">
                                         {voice.name} ({voice.lang})
                                     </option>
                                 ))}
