@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis';
-import { Play, Pause, Square, Volume2, Gauge, Music, Mic2, AlertCircle, Sparkles } from 'lucide-react';
+import { Play, Pause, Square, Volume2, Gauge, Music, Mic2, AlertCircle, BookOpen } from 'lucide-react';
 
 const SAMPLE_SCRIPT = `Hello guys! Welcome to our brand-new channel! This is our first ever video, and we're really happy to start this journey with you. Today, we're bringing you Episode 1 of Perfect World — so sit back, relax, and enjoy the story. If you like the content, make sure to like, share, and subscribe. Let's begin!
 
@@ -62,13 +62,12 @@ export default function Home() {
         <main className="min-h-screen p-4 md:p-8">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-8 animate-fade-in">
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                        <Sparkles className="w-8 h-8 text-purple-400" />
-                        <h1 className="text-4xl md:text-5xl font-bold gradient-text">AI Text to Speech</h1>
-                        <Sparkles className="w-8 h-8 text-pink-400" />
+                <div className="text-center mb-12 animate-fade-in">
+                    <div className="flex items-center justify-center gap-3 mb-3">
+                        <BookOpen className="w-7 h-7 text-accent" />
+                        <h1 className="text-5xl md:text-6xl font-bold text-foreground">Narrative Voice</h1>
                     </div>
-                    <p className="text-gray-300 text-lg">Transform your scripts into natural-sounding narration</p>
+                    <p className="text-accent/80 text-lg font-light">Transform your scripts into spoken stories</p>
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-6">
@@ -78,30 +77,30 @@ export default function Home() {
                         <div className="glass-strong rounded-2xl p-6 animate-slide-up">
                             <div className="flex items-center justify-between mb-4">
                                 <h2 className="text-xl font-semibold flex items-center gap-2">
-                                    <Mic2 className="w-5 h-5 text-purple-400" />
+                                    <Mic2 className="w-5 h-5 text-accent" />
                                     Your Script
                                 </h2>
-                                <span className="text-sm text-gray-400">{text.length} characters</span>
+                                <span className="text-sm text-accent/60">{text.length} characters</span>
                             </div>
 
                             <textarea
                                 value={text}
                                 onChange={(e) => setText(e.target.value)}
-                                className="w-full h-64 md:h-96 bg-white/5 border border-white/10 rounded-xl p-4 text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                className="w-full h-64 md:h-96 bg-white/50 border border-primary/20 rounded-lg p-4 text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="Enter your script here..."
                             />
                         </div>
 
                         {/* Progress Bar */}
                         {speaking && (
-                            <div className="glass rounded-xl p-4 animate-fade-in">
+                            <div className="glass rounded-lg p-4 animate-fade-in">
                                 <div className="flex items-center justify-between mb-2">
-                                    <span className="text-sm text-gray-300">Speaking...</span>
-                                    <span className="text-sm text-purple-400">{Math.round(progress)}%</span>
+                                    <span className="text-sm text-accent/70">Speaking...</span>
+                                    <span className="text-sm text-accent font-medium">{Math.round(progress)}%</span>
                                 </div>
-                                <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300"
+                                        className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
                                         style={{ width: `${progress}%` }}
                                     />
                                 </div>
@@ -119,7 +118,7 @@ export default function Home() {
                                 {!speaking ? (
                                     <button
                                         onClick={handleSpeak}
-                                        className="btn-gradient px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
+                                        className="btn-primary px-8 py-3 rounded-lg font-medium flex items-center gap-2"
                                     >
                                         <Play className="w-5 h-5" />
                                         Speak
@@ -128,7 +127,7 @@ export default function Home() {
                                     <>
                                         <button
                                             onClick={handlePauseResume}
-                                            className="btn-gradient px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
+                                            className="btn-primary px-8 py-3 rounded-lg font-medium flex items-center gap-2"
                                         >
                                             {paused ? (
                                                 <>
@@ -144,7 +143,7 @@ export default function Home() {
                                         </button>
                                         <button
                                             onClick={stop}
-                                            className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all"
+                                            className="btn-outline px-8 py-3 rounded-lg font-medium flex items-center gap-2"
                                         >
                                             <Square className="w-5 h-5" />
                                             Stop
